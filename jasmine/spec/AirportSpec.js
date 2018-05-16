@@ -8,7 +8,7 @@ describe('Airport', function(){
   describe('#land', function(){
     it('lands a plane', function(){
       airport.land(plane);
-      expect(airport.hanger).toContain(plane)
+      expect(airport.hangar).toContain(plane)
     })
   })
   describe('#takeOff', function(){
@@ -16,7 +16,7 @@ describe('Airport', function(){
       weather = jasmine.createSpyObj('weather', { 'condition': 'Sunny' });
       airport.land(plane);
       airport.takeOff(plane, weather);
-      expect(airport.hanger).not.toContain(plane)
+      expect(airport.hangar).not.toContain(plane)
     })
     it('raises error when weather is stormy', function(){
       weather = jasmine.createSpyObj('weather', { 'condition': 'Stormy' });
