@@ -1,6 +1,9 @@
+const CAPACITY = 5;
+// debugger
 function Airport() {
   this.hangar = [];
-};
+  this._full = false;
+}
 
 Airport.prototype.land = function(plane, weather = new Weather()) {
 
@@ -18,4 +21,8 @@ Airport.prototype.takeOff = function(plane, weather = new Weather()) {
   } else {
     throw 'Cannot take off'
   }
+}
+
+Airport.prototype.isFull = function() {
+  return this._full;
 }
