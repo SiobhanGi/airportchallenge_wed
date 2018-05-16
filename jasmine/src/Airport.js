@@ -2,8 +2,13 @@ function Airport() {
   this.hangar = [];
 };
 
-Airport.prototype.land = function(plane) {
-  this.hangar.push(plane);
+Airport.prototype.land = function(plane, weather = new Weather()) {
+
+  if (weather.condition() === 'Sunny') {
+    this.hangar.push(plane);
+  } else {
+    throw 'Cannot land'
+  }
 }
 
 Airport.prototype.takeOff = function(plane, weather = new Weather()) {
