@@ -3,7 +3,7 @@ describe('Airport', function(){
   it('returns maximum capacity for hanger', function(){
     expect(CAPACITY).toEqual(5);
   })
-// debugger;
+
   var airport
 
   beforeEach(function(){
@@ -30,8 +30,19 @@ describe('Airport', function(){
       expect(function() {airport.land(plane, weather) } ).toThrow('Cannot land');
     });
 
-
+    it('raises an error when airport is full', function(){
+      weather = jasmine.createSpyObj('weather', {'condition': 'Sunny'});
+      airport.land(plane, weather);
+      airport.land(plane, weather);
+      airport.land(plane, weather);
+      airport.land(plane, weather);
+      airport.land(plane, weather);
+      airport.land(plane, weather);
+      // airport.full();
+      expect(function() {airport.full()}).toThrow('Airport full');
+    })
   })
+
   describe('#takeOff', function(){
 
     beforeEach(function(){
